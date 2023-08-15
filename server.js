@@ -4,7 +4,7 @@ const port = process.env.PORT || 8080;
 
 const wss = new WebSocket.Server({ port: port });
 
-// Define the card sets 
+// Define the card sets
 const cards = [
   {"A_Set": ['card0', 'card0', 'card0'], "B_Set": ['card0', 'card0', 'card0']},
   {"A_Set": ['card1', 'card1', 'card1'], "B_Set": ['card1', 'card1', 'card1']},
@@ -23,9 +23,14 @@ const bwinning = [
   {"A_Set": ['card16', 'card17', 'card18'], "B_Set": ['card18', 'card17', 'card16']},
 ];
 
-let number1 = 0;
-let number2 = 0;
+let userVotes = {
+  a: 0,
+  b: 0,
+};
+
 let forceValue = null;
+
+let startTime = new Date();
 
 function getRandomIndex(list) {
   return Math.floor(Math.random() * list.length);
@@ -38,12 +43,20 @@ function sendRandomCardSets() {
     selectedCards = awinning[getRandomIndex(awinning)];
   } else if (forceValue === 'b') {
     selectedCards = bwinning[getRandomIndex(bwinning)];
-  } else if (number1 > number2) {
-    selectedCards = awinning[getRandomIndex(awinning)];
-  } else if (number2 > number1) {
-    selectedCards = bwinning[getRandomIndex(bwinning)];
   } else {
-    selectedCards = cards[getRandomIndex(cards)];
+    const totalVotes = userVotes.a + userVotes.b;
+
+    if (totalVotes > 0) {
+      if (userVotes.a > userVotes.b) {
+        selectedCards = awinning[getRandomIndex(awinning)];
+      } else if (userVotes.b > userVotes.a) {
+        selectedCards = bwinning[getRandomIndex(bwinning)];
+      } else {
+        selectedCards = cards[getRandomIndex(cards)];
+      }
+    } else {
+      selectedCards = cards[getRandomIndex(cards)];
+    }
   }
 
   const response = {
@@ -56,9 +69,34 @@ function sendRandomCardSets() {
     }
   });
 
-  // Reset forceValue
+  // Reset userVotes
+  userVotes = {
+    a: 0,
+    b: 0,
+  };
   forceValue = null;
 }
+// Start sending random card sets every 1 minute
+setInterval(() => {
+  sendRandomCardSets();
+}, 100000); // 1 minute in milliseconds
+
+// Send current time status continuously to all connected clients
+setInterval(() => {
+  let currentTime = Math.floor((new Date() - startTime) / 1000); // Elapsed time in seconds
+
+  // Reset the time when it reaches 100 seconds
+  if (currentTime >= 100) {
+    startTime = new Date();
+    currentTime = 0;
+  }
+
+  wss.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify({ currentTime }));
+    }
+  });
+}, 1000); // Update time every second
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
@@ -75,25 +113,20 @@ wss.on('connection', (ws) => {
       if (force === 'a' || force === 'b') {
         forceValue = force;
       } else if (key === 'a') {
-        number1 += value;
+        userVotes.a += value;
       } else if (key === 'b') {
-        number2 += value;
+        userVotes.b += value;
       }
     } catch (error) {
       console.error('Error parsing message:', error);
     }
   });
 
-  // Start sending random card sets every 1 minute
-  const timerId = setInterval(() => {
-    sendRandomCardSets();
-
-    number1 = 0;
-    number2 = 0;
-  }, 60000); // 1 minute in milliseconds
-
   ws.on('close', () => {
-    clearInterval(timerId);
     console.log('Client disconnected');
   });
+
+  // Send initial current time status to the newly connected client
+  const currentTime = Math.floor((new Date() - startTime) / 1000); // Elapsed time in seconds
+  ws.send(JSON.stringify({ currentTime }));
 });
