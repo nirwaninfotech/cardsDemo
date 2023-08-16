@@ -4,29 +4,248 @@ const port = process.env.PORT || 8080;
 
 const wss = new WebSocket.Server({ port: port });
 
-// Define the card sets
-const cards = [
-  {"A_Set": ['card0', 'card0', 'card0'], "B_Set": ['card0', 'card0', 'card0']},
-  {"A_Set": ['card1', 'card1', 'card1'], "B_Set": ['card1', 'card1', 'card1']},
-  {"A_Set": ['card2', 'card2', 'card2'], "B_Set": ['card2', 'card2', 'card2']},
-];
 
 const awinning = [
-  {"A_Set": ['card1', 'card2', 'card3'], "B_Set": ['card3', 'card2', 'card1']},
-  {"A_Set": ['card4', 'card5', 'card6'], "B_Set": ['card6', 'card5', 'card4']},
-  {"A_Set": ['card7', 'card8', 'card9'], "B_Set": ['card9', 'card8', 'card7']},
+  
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '4'},
+      {'suit': 'club', 'card': '5'},
+      {'suit': 'heart', 'card': '6'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': '7'},
+      {'suit': 'diamond', 'card': '8'},
+      {'suit': 'club', 'card': '9'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'heart', 'card': '10'},
+      {'suit': 'spade', 'card': 'jack'},
+      {'suit': 'diamond', 'card': 'queen'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': 'king'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'spade', 'card': '3'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '4'},
+      {'suit': 'club', 'card': '5'},
+      {'suit': 'heart', 'card': '6'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': '7'},
+      {'suit': 'diamond', 'card': '8'},
+      {'suit': 'club', 'card': '9'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'heart', 'card': '10'},
+      {'suit': 'spade', 'card': 'jack'},
+      {'suit': 'diamond', 'card': 'queen'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': 'king'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'spade', 'card': '3'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '4'},
+      {'suit': 'club', 'card': '5'},
+      {'suit': 'heart', 'card': '6'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': '7'},
+      {'suit': 'diamond', 'card': '8'},
+      {'suit': 'club', 'card': '9'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'heart', 'card': '10'},
+      {'suit': 'spade', 'card': 'jack'},
+      {'suit': 'diamond', 'card': 'queen'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': 'king'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'spade', 'card': '3'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '4'},
+      {'suit': 'club', 'card': '5'},
+      {'suit': 'heart', 'card': '6'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': '7'},
+      {'suit': 'diamond', 'card': '8'},
+      {'suit': 'club', 'card': '9'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'heart', 'card': '10'},
+      {'suit': 'spade', 'card': 'jack'},
+      {'suit': 'diamond', 'card': 'queen'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': 'king'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'spade', 'card': '3'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '4'},
+      {'suit': 'club', 'card': '5'},
+      {'suit': 'heart', 'card': '6'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': '7'},
+      {'suit': 'diamond', 'card': '8'},
+      {'suit': 'club', 'card': '9'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'heart', 'card': '10'},
+      {'suit': 'spade', 'card': 'jack'},
+      {'suit': 'diamond', 'card': 'queen'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': 'king'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'spade', 'card': '3'},
+    ],
+  },
 ];
 
 const bwinning = [
-  {"A_Set": ['card10', 'card11', 'card12'], "B_Set": ['card12', 'card11', 'card10']},
-  {"A_Set": ['card13', 'card14', 'card15'], "B_Set": ['card15', 'card14', 'card13']},
-  {"A_Set": ['card16', 'card17', 'card18'], "B_Set": ['card18', 'card17', 'card16']},
+  {
+    "A_Set": [
+      {'suit': 'club', 'card': 'A'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'diamond', 'card': 'jack'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': 'A'},
+      {'suit': 'heart', 'card': '4'},
+      {'suit': 'club', 'card': 'king'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '5'},
+      {'suit': 'spade', 'card': '8'},
+      {'suit': 'heart', 'card': 'queen'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': '3'},
+      {'suit': 'diamond', 'card': '10'},
+      {'suit': 'spade', 'card': '7'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'club', 'card': '9'},
+      {'suit': 'heart', 'card': '10'},
+      {'suit': 'diamond', 'card': 'king'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': '6'},
+      {'suit': 'heart', 'card': '3'},
+      {'suit': 'club', 'card': '8'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': 'queen'},
+      {'suit': 'spade', 'card': '2'},
+      {'suit': 'heart', 'card': '7'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': '4'},
+      {'suit': 'diamond', 'card': '6'},
+      {'suit': 'spade', 'card': '9'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'spade', 'card': '10'},
+      {'suit': 'heart', 'card': 'jack'},
+      {'suit': 'diamond', 'card': '4'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': '2'},
+      {'suit': 'spade', 'card': '5'},
+      {'suit': 'heart', 'card': '6'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '8'},
+      {'suit': 'spade', 'card': 'queen'},
+      {'suit': 'heart', 'card': '9'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': 'king'},
+      {'suit': 'diamond', 'card': '7'},
+      {'suit': 'spade', 'card': '3'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'heart', 'card': '3'},
+      {'suit': 'spade', 'card': '6'},
+      {'suit': 'diamond', 'card': '9'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': '10'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'spade', 'card': 'jack'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'diamond', 'card': '4'},
+      {'suit': 'club', 'card': '5'},
+      {'suit': 'heart', 'card': '6'},
+    ],
+    "B_Set": [
+      {'suit': 'spade', 'card': '7'},
+      {'suit': 'diamond', 'card': '8'},
+      {'suit': 'club', 'card': '9'},
+    ],
+  },
+  {
+    "A_Set": [
+      {'suit': 'heart', 'card': '10'},
+      {'suit': 'spade', 'card': 'jack'},
+      {'suit': 'diamond', 'card': 'queen'},
+    ],
+    "B_Set": [
+      {'suit': 'club', 'card': 'king'},
+      {'suit': 'heart', 'card': '2'},
+      {'suit': 'spade', 'card': '3'},
+    ],
+  }
 ];
+
 
 let userVotes = {
   a: 0,
   b: 0,
 };
+const lastResponses = [];
 
 let forceValue = null;
 
@@ -36,36 +255,70 @@ function getRandomIndex(list) {
   return Math.floor(Math.random() * list.length);
 }
 
+
+
 function sendRandomCardSets() {
   let selectedCards = [];
+  let winningSet = null;
+  let winner = '';
 
   if (forceValue === 'a') {
     selectedCards = awinning[getRandomIndex(awinning)];
+    winner = 'a';
   } else if (forceValue === 'b') {
     selectedCards = bwinning[getRandomIndex(bwinning)];
+    winner = 'b';
   } else {
     const totalVotes = userVotes.a + userVotes.b;
 
     if (totalVotes > 0) {
-      if (userVotes.a > userVotes.b) {
-        selectedCards = awinning[getRandomIndex(awinning)];
-      } else if (userVotes.b > userVotes.a) {
-        selectedCards = bwinning[getRandomIndex(bwinning)];
+      if (userVotes.a < userVotes.b) {
+        winningSet = awinning;
+        winner = 'a';
+      } else if (userVotes.b < userVotes.a) {
+        winningSet = bwinning;
+        winner = 'b';
       } else {
-        selectedCards = cards[getRandomIndex(cards)];
+        // Randomly choose between awinning and bwinning
+        if (Math.random() < 0.5) {
+          winningSet = awinning;
+          winner = 'a';
+        } else {
+          winningSet = bwinning;
+          winner = 'b';
+        }
       }
     } else {
-      selectedCards = cards[getRandomIndex(cards)];
+      // Randomly choose between awinning and bwinning
+      if (Math.random() < 0.5) {
+        winningSet = awinning;
+        winner = 'a';
+      } else {
+        winningSet = bwinning;
+        winner = 'b';
+      }
     }
   }
 
+  if (winningSet) {
+    selectedCards = winningSet[getRandomIndex(winningSet)];
+  }
+
   const response = {
+    winner: winner,
     cards: selectedCards,
   };
+
+  lastResponses.unshift(response.winner);
+  if (lastResponses.length > 10) {
+    lastResponses.pop();
+  }
 
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(response));
+      client.send(JSON.stringify(lastResponses));
+
     }
   });
 
@@ -76,6 +329,7 @@ function sendRandomCardSets() {
   };
   forceValue = null;
 }
+
 // Start sending random card sets every 1 minute
 setInterval(() => {
   sendRandomCardSets();
@@ -100,6 +354,7 @@ setInterval(() => {
 
 wss.on('connection', (ws) => {
   console.log('Client connected');
+  ws.send(JSON.stringify(lastResponses));
 
   ws.on('message', (message) => {
     console.log('Received:', message);
