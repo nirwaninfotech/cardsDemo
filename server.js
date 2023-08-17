@@ -385,3 +385,4 @@ wss.on('connection', (ws) => {
   const currentTime = Math.floor((new Date() - startTime) / 1000); // Elapsed time in seconds
   ws.send(JSON.stringify({ currentTime }));
 });
+
