@@ -6,7 +6,6 @@ const wss = new WebSocket.Server({ port: port });
 
 
 const awinning = [
-  
   {
     "A_Set": [
       {'suit': 'diamond', 'card': '4'},
@@ -29,42 +28,6 @@ const awinning = [
       {'suit': 'club', 'card': 'king'},
       {'suit': 'heart', 'card': '2'},
       {'suit': 'spade', 'card': '3'},
-    ],
-  },
-  {
-    "A_Set": [
-      {'suit': 'diamond', 'card': '4'},
-      {'suit': 'club', 'card': '5'},
-      {'suit': 'heart', 'card': '6'},
-    ],
-    "B_Set": [
-      {'suit': 'spade', 'card': '7'},
-      {'suit': 'diamond', 'card': '8'},
-      {'suit': 'club', 'card': '9'},
-    ],
-  },
-  {
-    "A_Set": [
-      {'suit': 'heart', 'card': '10'},
-      {'suit': 'spade', 'card': 'jack'},
-      {'suit': 'diamond', 'card': 'queen'},
-    ],
-    "B_Set": [
-      {'suit': 'club', 'card': 'king'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'spade', 'card': '3'},
-    ],
-  },
-  {
-    "A_Set": [
-      {'suit': 'diamond', 'card': '4'},
-      {'suit': 'club', 'card': '5'},
-      {'suit': 'heart', 'card': '6'},
-    ],
-    "B_Set": [
-      {'suit': 'spade', 'card': '7'},
-      {'suit': 'diamond', 'card': '8'},
-      {'suit': 'club', 'card': '9'},
     ],
   },
   {
@@ -214,30 +177,6 @@ const bwinning = [
       {'suit': 'spade', 'card': 'jack'},
     ],
   },
-  {
-    "A_Set": [
-      {'suit': 'diamond', 'card': '4'},
-      {'suit': 'club', 'card': '5'},
-      {'suit': 'heart', 'card': '6'},
-    ],
-    "B_Set": [
-      {'suit': 'spade', 'card': '7'},
-      {'suit': 'diamond', 'card': '8'},
-      {'suit': 'club', 'card': '9'},
-    ],
-  },
-  {
-    "A_Set": [
-      {'suit': 'heart', 'card': '10'},
-      {'suit': 'spade', 'card': 'jack'},
-      {'suit': 'diamond', 'card': 'queen'},
-    ],
-    "B_Set": [
-      {'suit': 'club', 'card': 'king'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'spade', 'card': '3'},
-    ],
-  }
 ];
 
 
