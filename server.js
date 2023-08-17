@@ -8,177 +8,251 @@ const wss = new WebSocket.Server({ port: port });
 const awinning = [
   {
     "A_Set": [
-      {'suit': 'diamond', 'card': '4'},
-      {'suit': 'club', 'card': '5'},
-      {'suit': 'heart', 'card': '6'},
+      { 'suit': 'diamond', 'card': '4' },
+      { 'suit': 'club', 'card': '5' },
+      { 'suit': 'heart', 'card': '6' },
     ],
     "B_Set": [
-      {'suit': 'spade', 'card': '7'},
-      {'suit': 'diamond', 'card': '8'},
-      {'suit': 'club', 'card': '9'},
+      { 'suit': 'spade', 'card': '7' },
+      { 'suit': 'diamond', 'card': '8' },
+      { 'suit': 'club', 'card': '9' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'heart', 'card': '10'},
-      {'suit': 'spade', 'card': 'jack'},
-      {'suit': 'diamond', 'card': 'queen'},
+      { 'suit': 'club', 'card': '9' },
+      { 'suit': 'heart', 'card': '10' },
+      { 'suit': 'diamond', 'card': 'king' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': 'king'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'spade', 'card': '3'},
+      { 'suit': 'spade', 'card': '6' },
+      { 'suit': 'heart', 'card': '3' },
+      { 'suit': 'club', 'card': '8' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'heart', 'card': '10'},
-      {'suit': 'spade', 'card': 'jack'},
-      {'suit': 'diamond', 'card': 'queen'},
+      { 'suit': 'diamond', 'card': 'queen' },
+      { 'suit': 'spade', 'card': '2' },
+      { 'suit': 'heart', 'card': '7' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': 'king'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'spade', 'card': '3'},
+      { 'suit': 'club', 'card': '4' },
+      { 'suit': 'diamond', 'card': '6' },
+      { 'suit': 'spade', 'card': '9' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'diamond', 'card': '4'},
-      {'suit': 'club', 'card': '5'},
-      {'suit': 'heart', 'card': '6'},
+      { 'suit': 'spade', 'card': '10' },
+      { 'suit': 'heart', 'card': 'jack' },
+      { 'suit': 'diamond', 'card': '4' },
     ],
     "B_Set": [
-      {'suit': 'spade', 'card': '7'},
-      {'suit': 'diamond', 'card': '8'},
-      {'suit': 'club', 'card': '9'},
+      { 'suit': 'club', 'card': '2' },
+      { 'suit': 'spade', 'card': '5' },
+      { 'suit': 'heart', 'card': '6' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'heart', 'card': '10'},
-      {'suit': 'spade', 'card': 'jack'},
-      {'suit': 'diamond', 'card': 'queen'},
+      { 'suit': 'diamond', 'card': '8' },
+      { 'suit': 'spade', 'card': 'queen' },
+      { 'suit': 'heart', 'card': '9' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': 'king'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'spade', 'card': '3'},
+      { 'suit': 'club', 'card': 'king' },
+      { 'suit': 'diamond', 'card': '7' },
+      { 'suit': 'spade', 'card': '3' },
+    ],
+  },
+  // Additional sets below
+  {
+    "A_Set": [
+      { 'suit': 'heart', 'card': '2' },
+      { 'suit': 'spade', 'card': '3' },
+      { 'suit': 'diamond', 'card': '4' },
+    ],
+    "B_Set": [
+      { 'suit': 'club', 'card': '5' },
+      { 'suit': 'heart', 'card': '6' },
+      { 'suit': 'spade', 'card': '7' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'diamond', 'card': '4'},
-      {'suit': 'club', 'card': '5'},
-      {'suit': 'heart', 'card': '6'},
+      { 'suit': 'diamond', 'card': 'queen' },
+      { 'suit': 'spade', 'card': 'king' },
+      { 'suit': 'heart', 'card': '10' },
     ],
     "B_Set": [
-      {'suit': 'spade', 'card': '7'},
-      {'suit': 'diamond', 'card': '8'},
-      {'suit': 'club', 'card': '9'},
+      { 'suit': 'club', 'card': 'jack' },
+      { 'suit': 'diamond', 'card': '2' },
+      { 'suit': 'spade', 'card': '4' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'heart', 'card': '10'},
-      {'suit': 'spade', 'card': 'jack'},
-      {'suit': 'diamond', 'card': 'queen'},
+      { 'suit': 'heart', 'card': '8' },
+      { 'suit': 'spade', 'card': '6' },
+      { 'suit': 'diamond', 'card': '4' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': 'king'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'spade', 'card': '3'},
+      { 'suit': 'club', 'card': '2' },
+      { 'suit': 'heart', 'card': '10' },
+      { 'suit': 'spade', 'card': 'queen' },
+    ],
+  },
+  {
+    "A_Set": [
+      { 'suit': 'diamond', 'card': '7' },
+      { 'suit': 'spade', 'card': '5' },
+      { 'suit': 'heart', 'card': '3' },
+    ],
+    "B_Set": [
+      { 'suit': 'club', 'card': 'A' },
+      { 'suit': 'diamond', 'card': 'king' },
+      { 'suit': 'spade', 'card': '9' },
+    ],
+  },
+  {
+    "A_Set": [
+      { 'suit': 'club', 'card': '8' },
+      { 'suit': 'heart', 'card': '6' },
+      { 'suit': 'diamond', 'card': '4' },
+    ],
+    "B_Set": [
+      { 'suit': 'spade', 'card': '2' },
+      { 'suit': 'diamond', 'card': '10' },
+      { 'suit': 'club', 'card': 'queen' },
     ],
   },
 ];
+
 
 const bwinning = [
   {
     "A_Set": [
-      {'suit': 'club', 'card': 'A'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'diamond', 'card': 'jack'},
+      { 'suit': 'club', 'card': 'A' },
+      { 'suit': 'heart', 'card': '2' },
+      { 'suit': 'diamond', 'card': 'jack' },
     ],
     "B_Set": [
-      {'suit': 'spade', 'card': 'A'},
-      {'suit': 'heart', 'card': '4'},
-      {'suit': 'club', 'card': 'king'},
+      { 'suit': 'spade', 'card': 'A' },
+      { 'suit': 'heart', 'card': '4' },
+      { 'suit': 'club', 'card': 'king' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'diamond', 'card': '5'},
-      {'suit': 'spade', 'card': '8'},
-      {'suit': 'heart', 'card': 'queen'},
+      { 'suit': 'diamond', 'card': '5' },
+      { 'suit': 'spade', 'card': '8' },
+      { 'suit': 'heart', 'card': 'queen' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': '3'},
-      {'suit': 'diamond', 'card': '10'},
-      {'suit': 'spade', 'card': '7'},
+      { 'suit': 'club', 'card': '3' },
+      { 'suit': 'diamond', 'card': '10' },
+      { 'suit': 'spade', 'card': '7' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'club', 'card': '9'},
-      {'suit': 'heart', 'card': '10'},
-      {'suit': 'diamond', 'card': 'king'},
+      { 'suit': 'club', 'card': '9' },
+      { 'suit': 'heart', 'card': '10' },
+      { 'suit': 'diamond', 'card': 'king' },
     ],
     "B_Set": [
-      {'suit': 'spade', 'card': '6'},
-      {'suit': 'heart', 'card': '3'},
-      {'suit': 'club', 'card': '8'},
+      { 'suit': 'spade', 'card': '6' },
+      { 'suit': 'heart', 'card': '3' },
+      { 'suit': 'club', 'card': '8' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'diamond', 'card': 'queen'},
-      {'suit': 'spade', 'card': '2'},
-      {'suit': 'heart', 'card': '7'},
+      { 'suit': 'diamond', 'card': 'queen' },
+      { 'suit': 'spade', 'card': '2' },
+      { 'suit': 'heart', 'card': '7' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': '4'},
-      {'suit': 'diamond', 'card': '6'},
-      {'suit': 'spade', 'card': '9'},
+      { 'suit': 'club', 'card': '4' },
+      { 'suit': 'diamond', 'card': '6' },
+      { 'suit': 'spade', 'card': '9' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'spade', 'card': '10'},
-      {'suit': 'heart', 'card': 'jack'},
-      {'suit': 'diamond', 'card': '4'},
+      { 'suit': 'spade', 'card': '10' },
+      { 'suit': 'heart', 'card': 'jack' },
+      { 'suit': 'diamond', 'card': '4' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': '2'},
-      {'suit': 'spade', 'card': '5'},
-      {'suit': 'heart', 'card': '6'},
+      { 'suit': 'club', 'card': '2' },
+      { 'suit': 'spade', 'card': '5' },
+      { 'suit': 'heart', 'card': '6' },
+    ],
+  },
+  // Additional sets below
+  {
+    "A_Set": [
+      { 'suit': 'diamond', 'card': '7' },
+      { 'suit': 'spade', 'card': '6' },
+      { 'suit': 'heart', 'card': '5' },
+    ],
+    "B_Set": [
+      { 'suit': 'club', 'card': '4' },
+      { 'suit': 'diamond', 'card': '3' },
+      { 'suit': 'spade', 'card': '2' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'diamond', 'card': '8'},
-      {'suit': 'spade', 'card': 'queen'},
-      {'suit': 'heart', 'card': '9'},
+      { 'suit': 'club', 'card': '10' },
+      { 'suit': 'heart', 'card': '9' },
+      { 'suit': 'diamond', 'card': '8' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': 'king'},
-      {'suit': 'diamond', 'card': '7'},
-      {'suit': 'spade', 'card': '3'},
+      { 'suit': 'spade', 'card': '7' },
+      { 'suit': 'club', 'card': '6' },
+      { 'suit': 'heart', 'card': '5' },
     ],
   },
   {
     "A_Set": [
-      {'suit': 'heart', 'card': '3'},
-      {'suit': 'spade', 'card': '6'},
-      {'suit': 'diamond', 'card': '9'},
+      { 'suit': 'diamond', 'card': '4' },
+      { 'suit': 'spade', 'card': '3' },
+      { 'suit': 'heart', 'card': '2' },
     ],
     "B_Set": [
-      {'suit': 'club', 'card': '10'},
-      {'suit': 'heart', 'card': '2'},
-      {'suit': 'spade', 'card': 'jack'},
+      { 'suit': 'club', 'card': 'A' },
+      { 'suit': 'diamond', 'card': 'king' },
+      { 'suit': 'spade', 'card': 'queen' },
+    ],
+  },
+  {
+    "A_Set": [
+      { 'suit': 'club', 'card': '8' },
+      { 'suit': 'heart', 'card': '9' },
+      { 'suit': 'diamond', 'card': '10' },
+    ],
+    "B_Set": [
+      { 'suit': 'spade', 'card': 'jack' },
+      { 'suit': 'club', 'card': 'queen' },
+      { 'suit': 'heart', 'card': 'king' },
+    ],
+  },
+  {
+    "A_Set": [
+      { 'suit': 'diamond', 'card': '3' },
+      { 'suit': 'spade', 'card': '5' },
+      { 'suit': 'heart', 'card': '7' },
+    ],
+    "B_Set": [
+      { 'suit': 'club', 'card': '9' },
+      { 'suit': 'diamond', 'card': 'jack' },
+      { 'suit': 'spade', 'card': 'king' },
     ],
   },
 ];
-
 
 let userVotes = {
   a: 0,
