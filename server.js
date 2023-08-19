@@ -328,7 +328,7 @@ function sendCurrentTimeAndCards() {
   const response = {
     winner: winner,
     cards: selectedCards,
-    currentTime: currentTime, // Include current time in the response
+    // currentTime: currentTime, // Include current time in the response
   };
 
   lastResponses.unshift(response.winner);
